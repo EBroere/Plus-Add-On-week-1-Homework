@@ -4,19 +4,93 @@
     <meta charset="UTF-8" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.36/moment-timezone-with-data.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="src/style.css" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Homework</title>
-  </head>
-  <body>
-    <select id="city">
-      <option value="select">Select a city</option>
-      <option value="Europe/Paris">Paris 🇫🇷</option>
-      <option value="Asia/Tokyo">Tokyo 🇯🇵</option>
-      <option value="Australia/Sydney">Sydney 🇦🇺</option>
-    </select>
 
-    <script src="src/script.js"></script>
+    <style>
+      body {
+        background: linear-gradient(
+          to right,
+          rgb(242, 112, 156),
+          rgb(255, 148, 114)
+        );
+        font-family: Arial, sans-serif;
+      }
+
+      main {
+        margin: 100px 10px;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #city {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 30px;
+        color: #f2709a;
+      }
+
+      footer {
+        border-top: 1px solid #f9f7fe;
+        text-align: center;
+        color: white;
+      }
+
+      .footer-emoji {
+        color: initial;
+      }
+
+      a {
+        color: whitesmoke;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <select id="city">
+        <option value="select">Select a city</option>
+        <option value="Europe/Paris">Paris 🇫🇷</option>
+        <option value="Asia/Tokyo">Tokyo 🇯🇵</option>
+        <option value="Australia/Sydney">Sydney 🇦🇺</option>
+      </select>
+    </main>
+
+    <br />
+
+    <footer>
+      <p>
+        This project was coded by
+        <a
+          href="https://www.linkedin.com/in/ellen-broere-bb025386/"
+          target="_blank"
+          >Ellen Broere</a
+        >
+        <span class="footer-emoji">🧍🏽‍♀️ </span>
+        and is on
+        <a
+          href="https://github.com/EBroere/Plus-Add-On-week-1-Homework"
+          target="_blank"
+          >GitHub</a
+        >
+      </p>
+    </footer>
+
+    <script>
+      function showDate(event) {
+        if (event.target.value.length > 0) {
+          let currentTime = moment()
+            .tz(event.target.value)
+            .format("dddd, MMMM D, YYYY HH:mm A");
+
+          alert(`It is ${currentTime} in ${event.target.value}`);
+        }
+      }
+
+      let selectElement = document.querySelector("#city");
+      selectElement.addEventListener("change", showDate);
+    </script>
   </body>
 </html>
